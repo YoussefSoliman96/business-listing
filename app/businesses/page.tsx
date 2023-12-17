@@ -26,7 +26,9 @@ const businessesPage = async () => {
           {businesses.map((business) => (
             <Table.Row key={business.id}>
               <Table.Cell>
-                {business.title}
+                <Link href={`/businesses/${business.id}`}>
+                  {business.title}
+                </Link>
                 <div className="block md:hidden">email</div>
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell"></Table.Cell>
