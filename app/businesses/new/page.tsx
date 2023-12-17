@@ -11,6 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createBusinessSchema } from "@/app/validationSchemas";
 import { z } from "zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
+import Spinner from "@/app/components/Spinner";
 
 type BusinessForm = z.infer<typeof createBusinessSchema>;
 
@@ -25,6 +26,7 @@ const newBusinessPage = () => {
     resolver: zodResolver(createBusinessSchema),
   });
   const [error, setError] = useState("");
+  const [isSubmitting, setSubmitting] = useState(false);
 
   return (
     <div className="max-w-xl">
@@ -37,9 +39,11 @@ const newBusinessPage = () => {
         className=" space-y-3"
         onSubmit={handleSubmit(async (data) => {
           try {
+            setSubmitting(true);
             await axios.post("/api/businesses", data);
             router.push("/businesses");
           } catch (error) {
+            setSubmitting(false);
             setError("An unexpected error occured.");
           }
         })}
@@ -56,7 +60,9 @@ const newBusinessPage = () => {
           )}
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
-        <Button>Submit New Business</Button>
+        <Button disabled={isSubmitting}>
+          Submit New Business {isSubmitting && <Spinner />}
+        </Button>
       </form>
     </div>
   );
