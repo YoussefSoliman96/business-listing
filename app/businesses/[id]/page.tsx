@@ -1,4 +1,5 @@
 import prisma from "@/prisma/client";
+import { Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
 import React from "react";
 
@@ -15,9 +16,14 @@ const BusinessDetailPage = async ({ params }: Props) => {
 
   return (
     <div>
-      <p>{business.title}</p>
-      <p>{business.description}</p>
-      <p>{business.createdAt.toString()}</p>
+      <Heading>{business.title}</Heading>
+      <Flex className="gap-3">
+        <p>Email</p>
+        <Text>{business.createdAt.toString()}</Text>
+      </Flex>
+      <Card>
+        <p>{business.description}</p>
+      </Card>
     </div>
   );
 };
