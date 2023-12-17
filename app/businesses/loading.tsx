@@ -1,12 +1,11 @@
+import { Table } from "@radix-ui/themes";
 import React from "react";
-import { Button, Table } from "@radix-ui/themes";
-import Link from "next/link";
-import prisma from "@/prisma/client";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import BusinessActions from "./BusinessActions";
 
-const businessesPage = async () => {
-  const businesses = await prisma.business.findMany();
-
+const LoadingIssuesPage = () => {
+  const businesses = [1, 2, 3, 4, 5];
   return (
     <div>
       <BusinessActions />
@@ -24,14 +23,16 @@ const businessesPage = async () => {
         </Table.Header>
         <Table.Body>
           {businesses.map((business) => (
-            <Table.Row key={business.id}>
+            <Table.Row key={business}>
               <Table.Cell>
-                {business.title}
-                <div className="block md:hidden">email</div>
+                <Skeleton />
+                <div className="block md:hidden">
+                  <Skeleton />
+                </div>
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell"></Table.Cell>
               <Table.Cell className="hidden md:table-cell">
-                {business.createdAt.toString()}
+                <Skeleton />
               </Table.Cell>
             </Table.Row>
           ))}
@@ -41,4 +42,4 @@ const businessesPage = async () => {
   );
 };
 
-export default businessesPage;
+export default LoadingIssuesPage;
