@@ -39,7 +39,8 @@ const BusinessForm = ({ business }: { business?: Business }) => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       setSubmitting(true);
-      await axios.post("/api/businesses", data);
+      if (business) axios.patch("/api/businesses/" + business.id, data);
+      else await axios.post("/api/businesses", data);
       router.push("/businesses");
     } catch (error) {
       setSubmitting(false);
@@ -77,7 +78,8 @@ const BusinessForm = ({ business }: { business?: Business }) => {
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
         <Button disabled={isSubmitting}>
-          Submit New Business {isSubmitting && <Spinner />}
+          {business ? "Update Business" : "Submit New Business"}{" "}
+          {isSubmitting && <Spinner />}
         </Button>
       </form>
     </div>
