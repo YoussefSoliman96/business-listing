@@ -15,6 +15,8 @@ interface Props {
 const BusinessDetailPage = async ({ params }: Props) => {
   const session = await getServerSession(authOptions);
 
+  const currentUserEmail = session?.user?.email;
+
   const business = await prisma.business.findUnique({
     where: { id: parseInt(params.id) },
   });
@@ -26,7 +28,7 @@ const BusinessDetailPage = async ({ params }: Props) => {
       <Box className="md:col-span-4">
         <BusinessDetails business={business} />
       </Box>
-      {session && (
+      {currentUserEmail === business.email && (
         <Box>
           <Flex direction="column">
             <EditBusinessButton businessId={business.id} />
