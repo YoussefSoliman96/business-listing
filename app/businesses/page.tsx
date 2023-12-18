@@ -1,7 +1,7 @@
 import prisma from "@/prisma/client";
 import { Badge, Table } from "@radix-ui/themes";
+import { Link } from "@/app/components";
 import BusinessActions from "./BusinessActions";
-import Link from "../components/Link";
 
 const businessesPage = async () => {
   const businesses = await prisma.business.findMany();
