@@ -10,7 +10,7 @@ const CancelButton = () => {
       variant="soft"
       color="gray"
       my="3"
-      onClick={() => router.push("/businesses")}
+      onClick={() => router.push("/businesses/list")}
     >
       Cancel
     </Button>

@@ -37,7 +37,7 @@ const BusinessForm = ({ business }: { business?: Business }) => {
       setSubmitting(true);
       if (business) axios.patch("/api/businesses/" + business.id, data);
       else await axios.post("/api/businesses", data);
-      router.push("/businesses");
+      router.push("/businesses/list");
       router.refresh();
     } catch (error) {
       setSubmitting(false);

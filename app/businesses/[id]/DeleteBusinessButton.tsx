@@ -15,7 +15,7 @@ const DeleteBusinessButton = ({ businessId }: { businessId: number }) => {
       // throw new Error();
       setDeleting(true);
       await axios.delete("/api/businesses/" + businessId);
-      router.push("/businesses");
+      router.push("/businesses/list");
       router.refresh();
     } catch (error) {
       setDeleting(false);

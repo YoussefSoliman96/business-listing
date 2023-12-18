@@ -2,9 +2,10 @@ import prisma from "@/prisma/client";
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import BusinessFormSkeleton from "./loading";
-import DeleteBusinessButton from "../DeleteBusinessButton";
-import CancelButton from "../CancelButton";
+
 import { Flex } from "@radix-ui/themes";
+import CancelButton from "../../[id]/CancelButton";
+import DeleteBusinessButton from "../../[id]/DeleteBusinessButton";
 
 const BusinessForm = dynamic(
   () => import("@/app/businesses/_components/BusinessForm"),
