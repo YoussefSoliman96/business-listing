@@ -11,8 +11,6 @@ interface Props {
 }
 
 const businessesPage = async ({ searchParams }: Props) => {
-  const businesses = await prisma.business.findMany();
-
   const columns: {
     label: string;
     value: keyof Business;
@@ -22,6 +20,16 @@ const businessesPage = async ({ searchParams }: Props) => {
     { label: "Email", value: "email", className: "hidden md:table-cell" },
     { label: "Created", value: "createdAt", className: "hidden md:table-cell" },
   ];
+
+  const orderBy = columns
+    .map((column) => column.value)
+    .includes(searchParams.orderBy)
+    ? { [searchParams.orderBy]: "asc" }
+    : undefined;
+
+  const businesses = await prisma.business.findMany({
+    orderBy,
+  });
 
   return (
     <div>
