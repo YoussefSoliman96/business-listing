@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import BusinessFormSkeleton from "./loading";
 import DeleteBusinessButton from "../DeleteBusinessButton";
+import CancelButton from "../../_components/CancelButton";
+import { Flex } from "@radix-ui/themes";
 
 const BusinessForm = dynamic(
   () => import("@/app/businesses/_components/BusinessForm"),
@@ -26,7 +28,10 @@ const EditBusinessPage = async ({ params }: Props) => {
   return (
     <>
       <BusinessForm business={business} />
-      <DeleteBusinessButton businessId={business.id} />
+      <Flex direction="column" width="9">
+        <CancelButton />
+        <DeleteBusinessButton businessId={business.id} />
+      </Flex>
     </>
   );
 };
