@@ -13,9 +13,7 @@ interface Props {
 }
 
 const BusinessDetailPage = async ({ params }: Props) => {
-  // const session = await getServerSession(authOptions)
-  // if (!session)
-  // return NextResponse.json({}, {status: 401})
+  const session = await getServerSession(authOptions);
 
   const business = await prisma.business.findUnique({
     where: { id: parseInt(params.id) },
@@ -28,12 +26,14 @@ const BusinessDetailPage = async ({ params }: Props) => {
       <Box className="md:col-span-4">
         <BusinessDetails business={business} />
       </Box>
-      <Box>
-        <Flex direction="column">
-          <EditBusinessButton businessId={business.id} />
-          <DeleteBusinessButton businessId={business.id} />
-        </Flex>
-      </Box>
+      {session && (
+        <Box>
+          <Flex direction="column">
+            <EditBusinessButton businessId={business.id} />
+            <DeleteBusinessButton businessId={business.id} />
+          </Flex>
+        </Box>
+      )}
     </Grid>
   );
 };
