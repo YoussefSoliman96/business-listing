@@ -1,8 +1,7 @@
-import React from "react";
-import { Button, Table } from "@radix-ui/themes";
-import Link from "next/link";
 import prisma from "@/prisma/client";
+import { Table } from "@radix-ui/themes";
 import BusinessActions from "./BusinessActions";
+import Link from "../components/Link";
 
 const businessesPage = async () => {
   const businesses = await prisma.business.findMany();
