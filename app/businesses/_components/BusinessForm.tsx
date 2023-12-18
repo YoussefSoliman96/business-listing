@@ -7,7 +7,7 @@ import "easymde/dist/easymde.min.css";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createBusinessSchema } from "@/app/validationSchemas";
+import { businessSchema } from "@/app/validationSchemas";
 import { z } from "zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
@@ -17,7 +17,7 @@ const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
 });
 
-type BusinessFormData = z.infer<typeof createBusinessSchema>;
+type BusinessFormData = z.infer<typeof businessSchema>;
 
 interface Props {
   business?: Business;
@@ -31,7 +31,7 @@ const BusinessForm = ({ business }: { business?: Business }) => {
     handleSubmit,
     formState: { errors },
   } = useForm<BusinessFormData>({
-    resolver: zodResolver(createBusinessSchema),
+    resolver: zodResolver(businessSchema),
   });
   const [error, setError] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
