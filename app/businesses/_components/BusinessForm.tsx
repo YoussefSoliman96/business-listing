@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import SimpleMDE from "react-simplemde-editor";
 import { z } from "zod";
+import toast, { Toaster } from "react-hot-toast";
 
 type BusinessFormData = z.infer<typeof businessSchema>;
 
@@ -29,29 +30,30 @@ const BusinessForm = ({ business }: { business?: Business }) => {
   } = useForm<BusinessFormData>({
     resolver: zodResolver(businessSchema),
   });
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
 
   const onSubmit = handleSubmit(async (data) => {
     try {
       setSubmitting(true);
-      if (business) axios.patch("/api/businesses/" + business.id, data);
+      if (business) await axios.patch("/api/businesses/" + business.id, data);
       else await axios.post("/api/businesses", data);
       router.push("/businesses/list");
       router.refresh();
     } catch (error) {
       setSubmitting(false);
-      setError("An unexpected error occured.");
+      toast.error("Changes could not be saved");
     }
   });
 
   return (
     <div className="max-w-xl">
-      {error && (
+      {/* {error && (
         <Callout.Root color="red" className="mb-5">
           <Callout.Text>{error}</Callout.Text>
         </Callout.Root>
-      )}
+      )} */}
+      <Toaster />
       <form className=" space-y-3" onSubmit={onSubmit}>
         <TextField.Root>
           <TextField.Input
