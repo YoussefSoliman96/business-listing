@@ -28,3 +28,21 @@ export async function PATCH(
 
   return NextResponse.json(udpatedBusiness);
 }
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const business = await prisma.business.findUnique({
+    where: { id: parseInt(params.id) },
+  });
+
+  if (!business)
+    return NextResponse.json({ error: "Invalid business" }, { status: 404 });
+
+  await prisma.business.delete({
+    where: { id: business.id },
+  });
+
+  return NextResponse.json({});
+}
