@@ -59,7 +59,7 @@ const businessesPage = async ({ searchParams }: Props) => {
                 <Link href={`/businesses/${business.id}`}>
                   {business.title}
                 </Link>
-                <div className="block md:hidden">email</div>
+                <div className="block md:hidden">{business.email}</div>
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
                 <Badge color="gray">{business.email}</Badge>
