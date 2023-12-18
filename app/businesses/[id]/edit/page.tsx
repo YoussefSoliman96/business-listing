@@ -1,6 +1,15 @@
 import prisma from "@/prisma/client";
-import BusinessForm from "../../_components/BusinessForm";
 import { notFound } from "next/navigation";
+import dynamic from "next/dynamic";
+import BusinessFormSkeleton from "./loading";
+
+const BusinessForm = dynamic(
+  () => import("@/app/businesses/_components/BusinessForm"),
+  {
+    ssr: false,
+    loading: () => <BusinessFormSkeleton />,
+  }
+);
 
 interface Props {
   params: { id: string };

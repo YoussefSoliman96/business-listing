@@ -1,14 +1,3 @@
-import { Box } from "@radix-ui/themes";
-import React from "react";
-import { Skeleton } from "@/app/components";
+import BusinessFormSkeleton from "../_components/BusinessFormSkeleton";
 
-const LoadingNewBusinessPage = () => {
-  return (
-    <Box className="max-w-xl">
-      <Skeleton />
-      <Skeleton height="20rem" />
-    </Box>
-  );
-};
-
-export default LoadingNewBusinessPage;
+export default BusinessFormSkeleton;
