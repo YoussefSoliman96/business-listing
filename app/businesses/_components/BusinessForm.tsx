@@ -75,7 +75,7 @@ const BusinessForm = ({ business }: { business?: Business }) => {
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
         <Button disabled={isSubmitting}>
-          {business ? "Save Changes" : "Submit New Business"}{" "}
+          {business ? "Save Changes" : "Save New Business"}{" "}
           {isSubmitting && <Spinner />}
         </Button>
       </form>
