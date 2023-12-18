@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import BusinessFormSkeleton from "./loading";
 import DeleteBusinessButton from "../DeleteBusinessButton";
-import CancelButton from "../../_components/CancelButton";
+import CancelButton from "../CancelButton";
 import { Flex } from "@radix-ui/themes";
 
 const BusinessForm = dynamic(

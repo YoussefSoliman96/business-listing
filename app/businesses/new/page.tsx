@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import BusinessFormSkeleton from "./loading";
-import CancelButton from "../_components/CancelButton";
+import CancelButton from "../[id]/CancelButton";
 
 const BusinessForm = dynamic(
   () => import("@/app/businesses/_components/BusinessForm"),
