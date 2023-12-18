@@ -31,7 +31,7 @@ const businessesPage = async () => {
                 <div className="block md:hidden">email</div>
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
-                <Badge>Email</Badge>
+                <Badge>{business.email}</Badge>
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
                 {business.createdAt.toString()}
