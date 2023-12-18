@@ -1,5 +1,5 @@
 import prisma from "@/prisma/client";
-import { Table } from "@radix-ui/themes";
+import { Badge, Table } from "@radix-ui/themes";
 import BusinessActions from "./BusinessActions";
 import Link from "../components/Link";
 
@@ -30,7 +30,9 @@ const businessesPage = async () => {
                 </Link>
                 <div className="block md:hidden">email</div>
               </Table.Cell>
-              <Table.Cell className="hidden md:table-cell"></Table.Cell>
+              <Table.Cell className="hidden md:table-cell">
+                <Badge>Email</Badge>
+              </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
                 {business.createdAt.toString()}
               </Table.Cell>

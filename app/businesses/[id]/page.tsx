@@ -1,5 +1,5 @@
 import prisma from "@/prisma/client";
-import { Card, Flex, Heading, Text } from "@radix-ui/themes";
+import { Badge, Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 
@@ -18,7 +18,7 @@ const BusinessDetailPage = async ({ params }: Props) => {
     <div>
       <Heading>{business.title}</Heading>
       <Flex className="gap-3">
-        <p>Email</p>
+        <Badge color="blue">Email</Badge>
         <Text>{business.createdAt.toString()}</Text>
       </Flex>
       <Card className="prose" mt="4">
