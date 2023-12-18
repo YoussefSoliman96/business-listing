@@ -4,12 +4,19 @@ import { notFound } from "next/navigation";
 import BusinessDetails from "./BusinessDetails";
 import EditBusinessButton from "./EditBusinessButton";
 import DeleteBusinessButton from "./DeleteBusinessButton";
+import { getServerSession } from "next-auth";
+import authOptions from "@/app/auth/authOptions";
+import { NextResponse } from "next/server";
 
 interface Props {
   params: { id: string };
 }
 
 const BusinessDetailPage = async ({ params }: Props) => {
+  // const session = await getServerSession(authOptions)
+  // if (!session)
+  // return NextResponse.json({}, {status: 401})
+
   const business = await prisma.business.findUnique({
     where: { id: parseInt(params.id) },
   });
