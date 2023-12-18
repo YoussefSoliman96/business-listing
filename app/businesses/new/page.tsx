@@ -1,8 +1,6 @@
-"use client";
 import dynamic from "next/dynamic";
 import BusinessFormSkeleton from "./loading";
-import { Button } from "@radix-ui/themes";
-import { useRouter } from "next/navigation";
+import CancelButton from "../_components/CancelButton";
 
 const BusinessForm = dynamic(
   () => import("@/app/businesses/_components/BusinessForm"),
@@ -10,18 +8,10 @@ const BusinessForm = dynamic(
 );
 
 const NewBusinessPage = () => {
-  const router = useRouter();
   return (
     <>
       <BusinessForm />
-      <Button
-        variant="soft"
-        color="gray"
-        my="3"
-        onClick={() => router.push("/businesses")}
-      >
-        Cancel
-      </Button>
+      <CancelButton />
     </>
   );
 };
