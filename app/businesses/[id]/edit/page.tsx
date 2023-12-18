@@ -2,6 +2,7 @@ import prisma from "@/prisma/client";
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import BusinessFormSkeleton from "./loading";
+import DeleteBusinessButton from "../DeleteBusinessButton";
 
 const BusinessForm = dynamic(
   () => import("@/app/businesses/_components/BusinessForm"),
@@ -22,7 +23,12 @@ const EditBusinessPage = async ({ params }: Props) => {
 
   if (!business) notFound();
 
-  return <BusinessForm business={business} />;
+  return (
+    <>
+      <BusinessForm business={business} />
+      <DeleteBusinessButton businessId={business.id} />
+    </>
+  );
 };
 
 export default EditBusinessPage;

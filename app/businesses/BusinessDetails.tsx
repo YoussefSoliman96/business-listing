@@ -11,7 +11,7 @@ const BusinessDetails = ({ business }: { business: Business }) => {
         <Badge color="blue">Email</Badge>
         <Text>{business.createdAt.toString()}</Text>
       </Flex>
-      <Card className="prose" mt="4">
+      <Card className="prose max-w-full" mt="4">
         <ReactMarkdown>{business.description}</ReactMarkdown>
       </Card>
     </>
