@@ -14,7 +14,7 @@ const businessesPage = async ({ searchParams }: Props) => {
     : undefined;
 
   const page = parseInt(searchParams.page) || 1;
-  const pageSize = 2;
+  const pageSize = 10;
   const businesses = await prisma.business.findMany({
     orderBy,
     skip: (page - 1) * pageSize,
