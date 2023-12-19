@@ -7,19 +7,22 @@ import DeleteBusinessButton from "./DeleteBusinessButton";
 import { getServerSession } from "next-auth";
 import authOptions from "@/app/auth/authOptions";
 import { NextResponse } from "next/server";
+import { cache } from "react";
 
 interface Props {
   params: { id: string };
 }
 
+const fetchBusiness = cache((businessId: number) =>
+  prisma.business.findUnique({ where: { id: businessId } })
+);
+
 const BusinessDetailPage = async ({ params }: Props) => {
   const session = await getServerSession(authOptions);
 
-  const currentUserEmail = session?.user?.email;
+  const business = await fetchBusiness(parseInt(params.id));
 
-  const business = await prisma.business.findUnique({
-    where: { id: parseInt(params.id) },
-  });
+  const currentUserEmail = session?.user?.email;
 
   if (!business) notFound();
 
@@ -41,9 +44,7 @@ const BusinessDetailPage = async ({ params }: Props) => {
 };
 
 export async function generateMetadata({ params }: Props) {
-  const business = await prisma.business.findUnique({
-    where: { id: parseInt(params.id) },
-  });
+  const business = await fetchBusiness(parseInt(params.id));
   return {
     title: business?.title,
     description: "Details of business " + business?.id,
