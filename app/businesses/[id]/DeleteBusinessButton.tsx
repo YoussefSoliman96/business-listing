@@ -2,6 +2,7 @@
 import { Spinner } from "@/app/components";
 import { AlertDialog, Button, Flex } from "@radix-ui/themes";
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -28,7 +29,7 @@ const DeleteBusinessButton = ({ businessId }: { businessId: number }) => {
       <AlertDialog.Root>
         <AlertDialog.Trigger>
           <Button color="red" disabled={isDeleting}>
-            <p>Delete</p>
+            <Link href="">Delete</Link>
             {isDeleting && <Spinner />}
           </Button>
         </AlertDialog.Trigger>
@@ -46,7 +47,7 @@ const DeleteBusinessButton = ({ businessId }: { businessId: number }) => {
             </AlertDialog.Cancel>
             <AlertDialog.Action>
               <Button color="red" onClick={deleteBusiness}>
-                <p>Delete Business</p>
+                <Link href="">Delete Business</Link>
               </Button>
             </AlertDialog.Action>
           </Flex>
