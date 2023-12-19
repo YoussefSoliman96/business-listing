@@ -1,14 +1,14 @@
-import { Button } from "@radix-ui/themes";
+import { Button, Flex } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 
 const BusinessActions = () => {
   return (
-    <div className="mb-5">
+    <Flex justify="between">
       <Button>
         <Link href="/businesses/new">New Business</Link>
       </Button>
-    </div>
+    </Flex>
   );
 };
 
