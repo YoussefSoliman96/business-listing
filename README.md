@@ -45,6 +45,7 @@ This project is an a business listing management platform where users and add an
 - Google Authentication
 - REST API
 - Zod Validation
+- Pagination
 
 ## Code Style:
 
