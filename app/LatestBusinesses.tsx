@@ -1,5 +1,5 @@
 import prisma from "@/prisma/client";
-import { Badge, Card, Flex, Heading, Table } from "@radix-ui/themes";
+import { Badge, Box, Card, Flex, Heading, Table } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 
@@ -19,10 +19,17 @@ const LatestBusinesses = async () => {
             <Table.Row key={business.id}>
               <Table.Cell>
                 <Flex justify="between">
-                  <Link href={`/businesses/${business.id}`}>
-                    {business.title}
-                  </Link>
-                  <Badge color="blue">{business.email}</Badge>
+                  <Flex direction="column" align="start" gap="3">
+                    <Link href={`/businesses/${business.id}`}>
+                      {business.title}
+                    </Link>
+                    <Box>
+                      <Badge color="blue">{business.email}</Badge>
+                    </Box>
+                  </Flex>
+                  <Badge color="gray">
+                    {business.createdAt.toDateString()}
+                  </Badge>
                 </Flex>
               </Table.Cell>
             </Table.Row>
