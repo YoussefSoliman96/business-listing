@@ -13,7 +13,7 @@ const BusinessDetails = ({ business }: { business: Business }) => {
             {business.email}
           </Badge>
         </Box>
-        <Text>{business.createdAt.toString()}</Text>
+        <Text size="2">{business.createdAt.toDateString()}</Text>
       </Flex>
       <Card className="prose max-w-full" mt="4">
         <ReactMarkdown>{business.description}</ReactMarkdown>

@@ -46,7 +46,7 @@ const BusinessTable = ({ searchParams, businesses }: Props) => {
               <Badge color="gray">{business.email}</Badge>
             </Table.Cell>
             <Table.Cell className="hidden md:table-cell">
-              {business.createdAt.toString()}
+              {business.createdAt.toDateString()}
             </Table.Cell>
           </Table.Row>
         ))}
