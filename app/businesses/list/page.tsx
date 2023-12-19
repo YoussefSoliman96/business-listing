@@ -5,9 +5,10 @@ import NextLink from "next/link";
 import BusinessActions from "./BusinessActions";
 import { Business } from "@prisma/client";
 import { ArrowUpIcon } from "@radix-ui/react-icons";
+import Pagination from "@/app/components/Pagination";
 
 interface Props {
-  searchParams: { orderBy: keyof Business };
+  searchParams: { orderBy: keyof Business; page: string };
 }
 
 const businessesPage = async ({ searchParams }: Props) => {
@@ -27,9 +28,15 @@ const businessesPage = async ({ searchParams }: Props) => {
     ? { [searchParams.orderBy]: "asc" }
     : undefined;
 
+  const page = parseInt(searchParams.page) || 1;
+  const pageSize = 2;
   const businesses = await prisma.business.findMany({
     orderBy,
+    skip: (page - 1) * pageSize,
+    take: pageSize,
   });
+
+  const businessCount = await prisma.business.count();
 
   return (
     <div>
@@ -71,6 +78,11 @@ const businessesPage = async ({ searchParams }: Props) => {
           ))}
         </Table.Body>
       </Table.Root>
+      <Pagination
+        pageSize={pageSize}
+        currentPage={page}
+        itemCount={businessCount}
+      />
     </div>
   );
 };
