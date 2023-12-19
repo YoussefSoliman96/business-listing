@@ -27,7 +27,7 @@ const DeleteBusinessButton = ({ businessId }: { businessId: number }) => {
     <>
       <AlertDialog.Root>
         <AlertDialog.Trigger>
-          <Button color="tomato" my="2" disabled={isDeleting}>
+          <Button color="red" disabled={isDeleting}>
             Delete
             {isDeleting && <Spinner />}
           </Button>
@@ -45,7 +45,7 @@ const DeleteBusinessButton = ({ businessId }: { businessId: number }) => {
               </Button>
             </AlertDialog.Cancel>
             <AlertDialog.Action>
-              <Button color="tomato" onClick={deleteBusiness}>
+              <Button color="red" onClick={deleteBusiness}>
                 Delete Business
               </Button>
             </AlertDialog.Action>

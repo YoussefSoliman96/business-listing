@@ -33,7 +33,7 @@ const BusinessDetailPage = async ({ params }: Props) => {
       </Box>
       {currentUserEmail === business.email && (
         <Box>
-          <Flex direction="column">
+          <Flex direction="column" gap="2">
             <EditBusinessButton businessId={business.id} />
             <DeleteBusinessButton businessId={business.id} />
           </Flex>
