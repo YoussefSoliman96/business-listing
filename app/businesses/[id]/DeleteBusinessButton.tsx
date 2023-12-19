@@ -28,7 +28,7 @@ const DeleteBusinessButton = ({ businessId }: { businessId: number }) => {
       <AlertDialog.Root>
         <AlertDialog.Trigger>
           <Button color="red" disabled={isDeleting}>
-            Delete
+            <p>Delete</p>
             {isDeleting && <Spinner />}
           </Button>
         </AlertDialog.Trigger>
@@ -46,7 +46,7 @@ const DeleteBusinessButton = ({ businessId }: { businessId: number }) => {
             </AlertDialog.Cancel>
             <AlertDialog.Action>
               <Button color="red" onClick={deleteBusiness}>
-                Delete Business
+                <p>Delete Business</p>
               </Button>
             </AlertDialog.Action>
           </Flex>
