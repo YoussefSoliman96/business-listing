@@ -40,4 +40,14 @@ const BusinessDetailPage = async ({ params }: Props) => {
   );
 };
 
+export async function generateMetadata({ params }: Props) {
+  const business = await prisma.business.findUnique({
+    where: { id: parseInt(params.id) },
+  });
+  return {
+    title: business?.title,
+    description: "Details of business " + business?.id,
+  };
+}
+
 export default BusinessDetailPage;

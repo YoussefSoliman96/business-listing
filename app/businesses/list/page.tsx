@@ -3,6 +3,7 @@ import prisma from "@/prisma/client";
 import BusinessActions from "./BusinessActions";
 import BusinessTable, { BusinessQuery, columnNames } from "./BusinessTable";
 import { Flex } from "@radix-ui/themes";
+import { Metadata } from "next";
 
 interface Props {
   searchParams: BusinessQuery;
@@ -38,5 +39,10 @@ const businessesPage = async ({ searchParams }: Props) => {
 
 // export const revalidate = 0;
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Business Manager - Business List",
+  description: "View all businesses",
+};
 
 export default businessesPage;
