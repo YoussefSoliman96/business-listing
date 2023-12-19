@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Business Manager
 
-## Getting Started
+[Live Demo](https://business-manager-two.vercel.app/)
 
-First, run the development server:
+## Table of content:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Project Description](#project-description)
+- [Stack and Frameworks](#tech-stack)
+- [Features](#features)
+- [Dependencies](#dependencies)
+- [Setup](#setup)
+- [Screenshots](#screenshots)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Description:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Overview:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project is an a business listing management platform where users and add and manage their business.
 
-## Learn More
+## Tech Stack:
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js
+- Typescript
+- React
+- jQuery
+- Node.js
+- Tailwind CSS
+- Radix UI
+- Git
+- VSCode
+- Axios API
+- Prisma
+- Auth.js
+- Zod
+- Supabase DB
+- DataGrip
+- Postman
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Sorting
+- Authentication
+- Authorization
+- Mobile responsiveness
+- Google Authentication
+- REST API
+- Zod Validation
 
-## Deploy on Vercel
+## Code Style:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Prettier
+- Pascal Case
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Setup:
+
+1. Clone this repository to your local machine.
+2. Run `npm install` to install the required dependencies.
+3. Rename .env.example to .env
+4. Get Google API key at https://console.cloud.google.com/. You'll have to create an account first.
+5. Get Auth.js key at https://next-auth.js.org/configuration/options. You'll have to create an account first.
+6. Add the API keys to **.env**
+7. Run `npm run dev` to start the web server.
+
+## Screenshots:
+
+### Homepage
+
+![Homepage](public/assests/homepage.png)
+
+### Business List
+
+![Business List](public/assests/business-list.png)
+
+### Business Page
+
+![Business Page](public/assests/business-page.png)
+
+### Create Business
+
+![Create Business](public/assests/create-business.png)
+
+### Delete Business
+
+![Delete Business](public/assests/delete-business.png)
+
+### Mobile View
+
+![Mobile View](public/assests/phone.png)
