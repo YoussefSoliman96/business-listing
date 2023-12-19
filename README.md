@@ -15,7 +15,7 @@
 
 ### Overview:
 
-This project is an a business listing management platform where users and add and manage their business.
+This project is a business listing management platform where users can add and manage their business.
 
 ## Tech Stack:
 
